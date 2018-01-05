@@ -109,7 +109,7 @@ class LiquidLoadEffect : NSObject {
         return CGPoint.zero // abstract
     }
 
-    func update() {
+    @objc func update() {
         // abstract
     }
     
