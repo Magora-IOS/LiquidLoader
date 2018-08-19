@@ -14,14 +14,23 @@ class LiquidLineEffect : LiquidLoadEffect {
     var circleInter: CGFloat!
 
     override func setupShape() -> [LiquittableCircle] {
-        return Array(0..<numberOfCircles).map { i in
-            return LiquittableCircle(
-                center: CGPoint(x: self.circleInter + self.circleRadius + CGFloat(i) * (self.circleInter + 2 * self.circleRadius), y: self.loader.frame.height * 0.5),
-                radius: self.circleRadius,
-                color: self.color,
-                growColor: self.growColor
-            )
-        }
+      
+      var result: [LiquittableCircle] = []
+
+      for i in 0..<numberOfCircles {
+        let floatI = CGFloat(i)
+        let circleInterVar: CGFloat = circleInter
+        let x = circleInterVar + circleRadius + floatI * (circleInter + 2 * circleRadius)
+        let center = CGPoint(x: x, y: loader.frame.height * 0.5)
+        
+        result.append(LiquittableCircle(center: center,
+          radius: circleRadius,
+          color: color,
+          growColor: growColor)
+        )
+      }
+      
+      return result
     }
 
     override func movePosition(_ key: CGFloat) -> CGPoint {
