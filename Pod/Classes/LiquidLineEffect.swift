@@ -20,7 +20,11 @@ class LiquidLineEffect : LiquidLoadEffect {
       for i in 0..<numberOfCircles {
         let floatI = CGFloat(i)
         let circleInterVar: CGFloat = circleInter
-        let x = circleInterVar + circleRadius + floatI * (circleInter + 2 * circleRadius)
+        
+        // The compiler is unable to type-check this expression in reasonable time; try breaking up the expression into distinct sub-expressions
+        let temp = floatI * (circleInter + 2 * circleRadius)
+        let x = circleInterVar + circleRadius + temp
+        
         let center = CGPoint(x: x, y: loader.frame.height * 0.5)
         
         result.append(LiquittableCircle(center: center,
