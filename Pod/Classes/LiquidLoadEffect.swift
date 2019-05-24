@@ -74,7 +74,7 @@ class LiquidLoadEffect : NSObject {
         resize()
 
         timer = CADisplayLink(target: self, selector: #selector(LiquidLoadEffect.update))
-        timer?.add(to: RunLoop.main, forMode: RunLoopMode.commonModes)
+        timer?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
     }
     
     func updateKeyframe(_ key: CGFloat) {
@@ -97,7 +97,7 @@ class LiquidLoadEffect : NSObject {
             self.engine?.draw(parent)
         }
         if let shadow = shadowCircle {
-            loader?.bringSubview(toFront: shadow)
+            loader?.bringSubviewToFront(shadow)
         }
     }
 
